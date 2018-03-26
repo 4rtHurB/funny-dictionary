@@ -7,6 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('learn');
+  this.route('words');
+  this.route('languages');
 });
 
 export default Router;

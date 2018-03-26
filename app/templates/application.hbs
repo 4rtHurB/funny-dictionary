@@ -1,5 +1,14 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#if nativeLang}}
+  <nav>
+    {{#link-to "learn"}}Learn{{/link-to}}
+  </nav>
+{{else}}
+  <h1>Select youre native language</h1>
+  <select onchange={{action 'handleSelectLang'}}>
+    {{#each model as |language|}}
+      <option value={{language.id}}>{{language.language}}</option>
+    {{/each}}
+  </select>
+{{/if}}
 
 {{outlet}}
