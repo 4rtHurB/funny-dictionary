@@ -1,0 +1,21 @@
+{{#if learningLang}}
+  {{#if currentWord}}
+    <h1>{{skipped}} words skipped, {{passed}} words passed</h1>
+    <h1>{{currentWord.word}}</h1>
+    <input type="text" value={{translate}} onkeyup={{action 'onChangeTranslate'}}>
+    <button type="button" onclick={{action 'skipWord'}}>Skip</button>
+  {{else}}
+    <h1>You successfully passed all words</h1>
+    <button type="button" onclick={{action 'clearPassed'}}>Try again</button>
+    <button type="button" onclick={{action 'clearLang'}}>Learn another language</button>
+  {{/if}}
+{{else}}
+  <h1>Select language that you want to learn</h1>
+  <select onchange={{action 'setLearningLang'}}>
+    <option>Select</option>
+    {{#each model as |language|}}
+      <option value={{language.id}}>{{language.language}}</option>
+    {{/each}}
+  </select>
+{{/if}}
+{{outlet}}
